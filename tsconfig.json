@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "lib": ["es5", "es6", "dom"],
     "module": "commonjs",
     "noImplicitAny": false,
@@ -13,14 +13,14 @@
     "moduleResolution": "node",
     "rootDirs": [
       "src"
-    ],
-    "paths": {
-      "js/*": ["src/js/*"],
-      "style/*": ["src/style/*"],
-      "shaders/*": ["src/shaders/*"],
-      "data/*": ["src/data/*"]
-    }
+    ]
   },
+  "include": [
+    "./src", 
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "@types"
+    ],
   "exclude": [
     "node_modules"
   ]
