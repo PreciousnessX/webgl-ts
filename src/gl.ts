@@ -19,7 +19,7 @@ export function createShader(
 /**
  * 创建program
  */
-export function createProgram(
+export function     createProgram(
   gl: WebGLRenderingContext,
   vertexShader: WebGLShader,
   fragmentShader: WebGLShader
