@@ -21,6 +21,13 @@ export function createShader(
   gl.deleteShader(shader);
 }
 
+/**
+ * 着色器程序
+ * @param gl WebGL2RenderingContext
+ * @param vertexShader WebGLShader
+ * @param fragmentShader WebGLShader
+ * @returns WebGLProgram
+ */
 export function createProgram(
   gl: WebGL2RenderingContext,
   vertexShader: WebGLShader,
