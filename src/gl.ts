@@ -1,8 +1,3 @@
-import * as cubeShader from './shaders/cube/vertex.glsl';
-import * as cubFragMent from './shaders/cube/fragment.glsl';
-console.log('cubeShader', cubeShader);
-console.log('cubFragMent', cubFragMent);
-
 // 创建着色器方法，输入参数：渲染上下文，着色器类型，数据源
 export function createShader(
 	gl: WebGLRenderingContext,
@@ -29,7 +24,7 @@ export function createShader(
  * @returns WebGLProgram
  */
 export function createProgram(
-	gl: WebGL2RenderingContext,
+	gl: WebGLRenderingContext,
 	vertexShader: WebGLShader,
 	fragmentShader: WebGLShader
 ): WebGLProgram {
