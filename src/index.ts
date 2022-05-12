@@ -45,7 +45,7 @@ const positionBuffer: WebGLBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
 // 3.c 通过绑定点向缓冲中存放数据
-const position: ArrayLike<Number> = [0, 0, 0, 0.5, 0.7, 0];
+const position: Array<Number> = [0, 0, 0, 0.5, 0.7, 0];
 gl.bufferData(
 	gl.ARRAY_BUFFER,
 	new Float32Array(position as unknown as ArrayBuffer),
