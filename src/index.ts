@@ -34,17 +34,11 @@ const fragmentShader: WebGLShader = createShader(
 const program: WebGLProgram = createProgram(gl, vertexShader, fragmentShader);
 
 // 3, 为着色器程序提供数据
-// 3.a 拿到变量 a_position 属性内存所在的位置
-const positionAttributeLocation: GLint = gl.getAttribLocation(
-	program,
-	'a_position'
-);
-
-// 3.b 属性值需要从缓冲区中获取数据  所以需要创建一个缓冲 并将缓存区 绑定给gl
+// 3.a 属性值需要从缓冲区中获取数据  所以需要创建一个缓冲 并将缓存区 绑定给gl
 const positionBuffer: WebGLBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
-// 3.c 通过绑定点向缓冲中存放数据
+// 3.b 通过绑定点向缓冲中存放数据
 const position: Array<Number> = [0, 0, 0, 0.5, 0.7, 0];
 gl.bufferData(
 	gl.ARRAY_BUFFER,
@@ -66,6 +60,12 @@ gl.clear(gl.COLOR_BUFFER_BIT);
 // 告诉它用我们之前写好的着色程序（一个着色器对）
 gl.useProgram(program);
 
+// 3.a 拿到变量 a_position 属性内存所在的位置
+const positionAttributeLocation: GLint = gl.getAttribLocation(
+	program,
+	'a_position'
+);
+
 //告诉WebGL怎么从我们之前准备的缓冲中获取数据给着色器中的属性。 首先我们需要启用对应属性
 gl.enableVertexAttribArray(positionAttributeLocation);
 
@@ -76,7 +76,9 @@ const normalize = false; // 不需要归一化数据
 const stride = 0; // 0 = 移动单位数量 * 每个单位占用内存（sizeof(type)）
 // 每次迭代运行运动多少内存到下一个数据开始点
 const offset = 0; // 从缓冲起始位置开始读取
+// 告诉显卡从当前绑定的缓冲区（bindBuffer()指定的缓冲区）中读取顶点数据
 gl.vertexAttribPointer(
+	// 这一步 才将 gl中的缓冲区数据 交给shader的a_position 变量
 	positionAttributeLocation,
 	size,
 	type,
