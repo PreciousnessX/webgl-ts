@@ -1,18 +1,18 @@
 const Path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-	context: Path.join(__dirname, '../src'),
-	entry: {
-		index: Path.resolve(__dirname, '../src/index.ts'),
-	},
-	output: {
-		path: Path.join(__dirname, '../dist'),
-		filename: '[name].js',
-		publicPath: './',
-	},
+	// context: Path.join(__dirname, '../src'),
+	// entry: {
+	// 	index: Path.resolve(__dirname, '../src/index.ts'),
+	// },
+	// output: {
+	// 	path: Path.join(__dirname, '../dist'),
+	// 	filename: '[name].js',
+	// 	publicPath: './',
+	// },
 	module: {
 		rules: [
 			{
@@ -40,10 +40,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 		}),
-		new HtmlWebpackPlugin({
-			template: Path.resolve(__dirname, '../src/index.html'),
-			filename: 'index.html',
-		}),
+		// new HtmlWebpackPlugin({
+		// 	template: Path.resolve(__dirname, '../src/index.html'),
+		// 	filename: 'index.html',
+		// }),
 	],
 	resolve: {
 		extensions: ['.ts', '.json', '.scss', '.glsl', '.js'],

@@ -19,6 +19,9 @@
     "./src", 
     "./src/**/*.ts",
     "./src/**/*.tsx",
+    "./example",
+    "./example/**/*.ts",
+    "./example/**/*.tsx",
     "@types"
     ],
   "exclude": [
