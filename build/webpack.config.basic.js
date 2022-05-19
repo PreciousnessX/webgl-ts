@@ -22,7 +22,7 @@ module.exports = {
 			},
 			{
 				test: /\.glsl$/,
-				use: ['glslify-import-loader', 'raw-loader', 'glslify-loader'],
+				use: ['glslify-import-loader', 'raw-loader', 'glslify-loader'], // https://zhuanlan.zhihu.com/p/51332085  (glslify-loader  模块化glsl 解析插件)
 			},
 			{
 				test: /\.scss$/,
