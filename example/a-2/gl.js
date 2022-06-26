@@ -1,10 +1,6 @@
 // 创建着色器方法，输入参数：渲染上下文，着色器类型，数据源
-export function createShader(
-	gl: WebGLRenderingContext,
-	type: number,
-	source: string
-): WebGLShader {
-	const shader: WebGLShader = gl.createShader(type); // 创建着色器对象
+export function createShader(gl, type, source) {
+	const shader = gl.createShader(type); // 创建着色器对象
 	gl.shaderSource(shader, source); // 提供数据源
 	gl.compileShader(shader); // 编译 -> 生成着色器
 	const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
@@ -23,12 +19,8 @@ export function createShader(
  * @param fragmentShader WebGLShader
  * @returns WebGLProgram
  */
-export function createProgram(
-	gl: WebGLRenderingContext,
-	vertexShader: WebGLShader,
-	fragmentShader: WebGLShader
-): WebGLProgram {
-	const program: WebGLProgram = gl.createProgram();
+export function createProgram(gl, vertexShader, fragmentShader) {
+	const program = gl.createProgram();
 	gl.attachShader(program, vertexShader);
 	gl.attachShader(program, fragmentShader);
 	gl.linkProgram(program);

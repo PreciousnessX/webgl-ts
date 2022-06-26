@@ -11,7 +11,7 @@ const entry = {};
 const htmlPlugin = [];
 if (exampleDirs && exampleDirs.length) {
 	exampleDirs.forEach((dirName) => {
-		entry[dirName] = path.resolve(__dirname, `../example/${dirName}/index.ts`);
+		entry[dirName] = path.resolve(__dirname, `../example/${dirName}/index.js`);
 		htmlPlugin.push(
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, `../example/${dirName}/index.html`),

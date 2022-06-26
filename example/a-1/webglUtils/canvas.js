@@ -1,4 +1,4 @@
-export function resize(canvas: HTMLCanvasElement): void {
+export function resize(canvas) {
 	// 获取浏览器中画布的显示尺寸
 	const displayWidth = canvas.clientWidth;
 	const displayHeight = canvas.clientHeight;
