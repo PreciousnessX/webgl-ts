@@ -14,8 +14,6 @@ canvas.height = rect.height;
 canvas.width = rect.width;
 
 const gl = canvas.getContext('webgl');
-console.log(gl);
-console.log(createShader);
 
 // 1, 使用createShaer 创建两个着色器
 const vertexShader = createShader(gl, gl.VERTEX_SHADER, cubeShader);
