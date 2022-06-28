@@ -51,6 +51,8 @@ function render(image) {
 		new Float32Array([
 			0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0,
 		]),
+		// new Float32Array([1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1]), // 镜像
+		// new Float32Array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0]), // 反转
 		gl.STATIC_DRAW
 	);
 
@@ -59,12 +61,14 @@ function render(image) {
 	gl.bindTexture(gl.TEXTURE_2D, texture);
 
 	// Set the parameters so we can render any size image.
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+	// 设置纹理参数
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); // 纹理水平填充
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); // 纹理垂直填充
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST); // 纹理缩小滤波器
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST); // 纹理放大滤波器
 
 	// Upload the image into the texture.
+	// 将图片载入到文字中
 	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
 	// lookup uniforms
