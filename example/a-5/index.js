@@ -35,15 +35,13 @@ function render(image) {
 	const positionLocation = gl.getAttribLocation(program, 'a_position');
 	const texcoordLocation = gl.getAttribLocation(program, 'a_texCoord');
 
-	// Create a buffer to put three 2d clip space points in
+	/************** 处理几何形状(几何体的形状)  ************/
 	const positionBuffer = gl.createBuffer();
-
-	// Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = positionBuffer)
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-	// Set a rectangle the same size as the image.
-	setRectangle(gl, 0, 0, image.width, image.height);
+	buildPositionData(gl, 0, 0, image.width, image.height, 1.3);
+	/*************** 处理几何形状 ********************/
 
-	// provide texture coordinates for the rectangle.
+	/***************** 处理uv贴图坐标(定义如何将图片贴到几何体上) ****************/
 	const texcoordBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, texcoordBuffer);
 	gl.bufferData(
@@ -51,10 +49,12 @@ function render(image) {
 		new Float32Array([
 			0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0,
 		]),
+		// new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0]), // 对角线对称
 		// new Float32Array([1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1]), // 镜像
 		// new Float32Array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0]), // 反转
 		gl.STATIC_DRAW
 	);
+	/***********处理uv 贴图坐标结束 ****************/
 
 	// Create a texture.
 	const texture = gl.createTexture();
@@ -68,7 +68,7 @@ function render(image) {
 	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST); // 纹理放大滤波器
 
 	// Upload the image into the texture.
-	// 将图片载入到文字中
+	// 将图片载入到纹理中
 	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
 	// lookup uniforms
@@ -128,11 +128,11 @@ function render(image) {
 	gl.drawArrays(primitiveType, offset, count);
 }
 
-function setRectangle(gl, x, y, width, height) {
+function buildPositionData(gl, x, y, width, height, scale = 1) {
 	const x1 = x;
-	const x2 = x + width;
+	const x2 = x + width * scale;
 	const y1 = y;
-	const y2 = y + height;
+	const y2 = y + height * scale;
 	gl.bufferData(
 		gl.ARRAY_BUFFER,
 		new Float32Array([x1, y1, x2, y1, x1, y2, x1, y2, x2, y1, x2, y2]),
