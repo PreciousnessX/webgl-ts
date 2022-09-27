@@ -27,7 +27,7 @@ if (exampleDirs && exampleDirs.length) {
 module.exports = merge(BasicWebpackConfig, {
 	entry,
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, '../dist'),
 		filename: '[name].js',
 		clean: true,
 		publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
