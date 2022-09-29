@@ -96,19 +96,19 @@ module.exports = {
 			},
 		],
 		// prettier
-		'prettier/prettier': [
-			'error',
-			{
-				tabWidrh: 4,
-				// 用制表符(tab)不是空格缩进行
-				// 如果为true，则取编辑器tabSize值
-				// 安装editorconfig编辑器插件并配置文件，则取 editorConfig 文件中设置的值
-				// 具体取indent_size或者tab_width，依据indent_style值来决定
-				// 如果为false，则取值为tabWidth值，但是有问题，经常需要重启编辑器才生效
-				useTabs: true,
-				singleQuote: true,
-			},
-		],
+		// 'prettier/prettier': [
+		// 	'error',
+		// 	{
+		// 		tabWidrh: 4,
+		// 		// 用制表符(tab)不是空格缩进行
+		// 		// 如果为true，则取编辑器tabSize值
+		// 		// 安装editorconfig编辑器插件并配置文件，则取 editorConfig 文件中设置的值
+		// 		// 具体取indent_size或者tab_width，依据indent_style值来决定
+		// 		// 如果为false，则取值为tabWidth值，但是有问题，经常需要重启编辑器才生效
+		// 		useTabs: true,
+		// 		singleQuote: true,
+		// 	},
+		// ],
 
 		// vue
 		// 'vue/no-v-html': 'off',
