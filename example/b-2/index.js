@@ -43,7 +43,7 @@ function main() {
 	setGeometry(gl);
 
 	const translation = [100, 150];
-	const rotation = [0, 1];
+	const rotation = [1, 0];
 	const color = [Math.random(), Math.random(), Math.random(), 1];
 
 	drawScene();
@@ -62,10 +62,10 @@ function main() {
 	$('#rotation').gmanUnitCircle({
 		width: 200,
 		height: 200,
-		value: 0,
+		value: Math.PI / 2,
 		slide(e, u) {
 			rotation[0] = u.x;
-			rotation[1] = u.y;
+			rotation[1] = -u.y;
 			drawScene();
 		},
 	});
@@ -113,6 +113,7 @@ function main() {
 		gl.uniform2fv(translationLocation, translation);
 
 		// Set the rotation.
+        console.log(rotation);
 		gl.uniform2fv(rotationLocation, rotation);
 
 		// Draw the geometry.

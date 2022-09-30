@@ -42,7 +42,7 @@ function main() {
 	setGeometry(gl);
 
 	const translation = [100, 150];
-	const rotation = [0, 1];
+	const rotation = [1, 0];
 	const scale = [1, 1];
 	const color = [Math.random(), Math.random(), Math.random(), 1];
 
@@ -85,10 +85,10 @@ function main() {
 	}
 
 	function updateAngle(event, ui) {
-		const angleInDegrees = 360 - ui.value;
+		const angleInDegrees = -ui.value;
 		const angleInRadians = (angleInDegrees * Math.PI) / 180;
-		rotation[0] = Math.sin(angleInRadians);
-		rotation[1] = Math.cos(angleInRadians);
+		rotation[0] = Math.cos(angleInRadians);
+		rotation[1] = Math.sin(angleInRadians);
 		drawScene();
 	}
 
